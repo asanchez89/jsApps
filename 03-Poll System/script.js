@@ -8,7 +8,7 @@ const options = [
 function submitVote(){
     const selectedOption = document.querySelector('input[name=poll]:checked');
 
-    if(selectedOption){
+    if(!selectedOption){
         alert('Seleccionar una opción.');
         return;
     }
@@ -46,3 +46,5 @@ function displayResult(){
 function getTotalVotes(){
     return options.reduce((total, option)=> total + option.votes, 0);
 }
+
+displayResult();

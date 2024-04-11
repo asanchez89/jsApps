@@ -41,3 +41,23 @@ function generateColor(){
         colorCodeEl.innerText = "#"+newColorCode;
     }
 }
+
+mainColorContainerEls.forEach((colorContainerEl)=>{
+    const copyButtonEl = colorContainerEl.querySelector('button');
+    const colorCodeEl = colorContainerEl.querySelector('.color-code');
+
+    copyButtonEl.addEventListener("click", ()=>{
+        const colorCode = colorCodeEl.innerText;
+        copyClipboard(colorCode);
+    });
+});
+
+function copyClipboard(text){
+    navigator.clipboard.writeText(text)
+    .then(()=>{
+        alert("Copied to Clipboard: "+text)
+    })
+    .catch((error)=>{
+        console.log("Fallo en copia de color ", error);
+    });
+}
